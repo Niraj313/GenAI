@@ -6,17 +6,20 @@ import Description from '../components/Description'
 import Testimonial from '../components/Testimonial'
 import GenerateBtn from '../components/GenerateBtn'
 import Footer from '../components/Footer'
+import Login from '../components/Login'
 
 const Home = () => {
   return (
     <div>
-        <Navbar/>
+        {/* <Navbar/>
         <Header/>
         <Steps/>
         <Description/>
         <Testimonial/>
         <GenerateBtn/>
-        <Footer/>
+        <Footer/> */}
+        <Login/>
+        
     </div>
   )
 }
