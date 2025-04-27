@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { motion } from "motion/react";
 import { assets, plans } from "../assets/assets";
+import { toast } from "react-toastify";
 
 const Pricing = () => {
   const { user, setShowLogin } = useContext(AppContext);
@@ -9,8 +10,53 @@ const Pricing = () => {
   const handleOnClick = () => {
     if (!user) {
       setShowLogin(true);
+    }else{
+      toast.error('Failed to create Razorpay order');
     }
   };
+
+  // Razorpay Payment Function
+  // const initpay = async(order) => {
+  //   const options = {
+  //     key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+  //     amount: order.amount,
+  //     currency: order.currency,
+  //     name: 'Credits Payment',
+  //     description: 'Credits Payment',
+  //     order_id: order.id,
+  //     receipt: order.receipt,
+  //     handler: async(response)=>{
+  //       try {
+  //         const {data} = await axios.post(backendUrl + '/api/user/verify-razor', response, {headers: {token}})
+  //         if (data.success) {
+  //           loadCreditsData()
+  //           navigate('/')
+  //           toast.success('Credit Added')
+  //         }
+  //       } catch (error) {
+  //         toast.error(error.message)
+  //       }
+  //     }
+  //   } 
+  //   const rzp = new window.Razorpay(options)
+  //   rzp.open() 
+  // }
+
+  // const paymentRazorpay = async (planId) => {
+  //   try {
+  //     if (!user) {
+  //       setShowLogin(true)
+  //     }
+
+  //     const{data} = await axios.post(backendUrl + '/api/user/pay-razor', {planId}, {headers: {token}})
+
+  //     if (data.success) {
+  //       initpay(data.order)
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.message)
+  //   }
+  // }
 
   return (
     <motion.div

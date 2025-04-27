@@ -1,15 +1,54 @@
 import React, { useContext, useState,useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 import { motion } from "motion/react";
+import axios from "axios";
+import {toast} from "react-toastify"
 import { assets } from "../assets/assets";
+
+
 const Login = () => {
-  const { setShowLogin} = useContext(AppContext);
+
+  const { setShowLogin, backendUrl, setToken, setUser} = useContext(AppContext);
   const [state, setState] = useState("Login");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const onSumbitHandler = async (e) => {
+    e.preventDefault();
+
+    try{
+      if(state === "Login") {
+
+        const {data} = await axios.post(backendUrl + '/api/user/login', {email, password});
+
+        if(data.success){
+          setToken(data.token);
+          setUser(data.user);
+          localStorage.setItem('token', data.token);
+          setShowLogin(false);
+        }else{
+          toast.error(data.message);
+        }
+
+      }else{
+        
+        const{data} = await axios.post(backendUrl + '/api/user/register', {name, email, password});
+
+        if(data.success){
+          setToken(data.token);
+          setUser(data.user);
+          localStorage.setItem('token', data.token);
+          setShowLogin(false);
+        }else{
+          toast.error(data.message);
+        }
+      }
+    }catch(error){
+      toast.error(error.message);
+    }
+  }
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -21,7 +60,7 @@ const Login = () => {
   return (
     <div className="fixed left-0 top-0 bottom-0 right-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
       <motion.form
-        // onSubmit={handleSubmit}
+        onSubmit={onSumbitHandler}
         initial={{ opacity: 0.2, y: 50 }}
         transition={{ duration: 0.3 }}
         whileInView={{ opacity: 1, y: 0 }}

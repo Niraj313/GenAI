@@ -10,19 +10,19 @@ const Result = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const { generateImage } = useContext(AppContext);
-
-  const handleSubmit = async (e) => {
+  const onSumbitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (input) {
+
+    if(input) {
       const image = await generateImage(input);
-      if (image) {
+      if(image) {
         setIsImageLoaded(true);
         setImage(image);
       }
     }
     setLoading(false);
-  };
+  }
 
   return (
     <motion.form
@@ -30,7 +30,7 @@ const Result = () => {
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      onSubmit={handleSubmit}
+      onSubmit={onSumbitHandler}
       className="flex flex-col min-h-[90vh] justify-center items-center"
     >
       <div>
