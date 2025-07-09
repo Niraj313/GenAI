@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <div className="flex items-center justify-between gap-4 py-3 mt-20">
-      <img src={assets.logo} width={150} />
+      <img src={assets.logo_icon} width={40} />
       <div className="flex gap-2.5">
         <a href={`${instagramId}`} target="_blank" rel="noopener noreferrer">
           <img
