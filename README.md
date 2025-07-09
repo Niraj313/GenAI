@@ -26,11 +26,3 @@ GenAI is a powerful full-stack web application that generates high-quality image
 | Framer Motion (UI)  | Axios (API calls)    |             |
 
 ---
-
-## 🔧 Installation
-
-### 🔹 Backend Setup
-
-```bash
-cd backend
-npm install
