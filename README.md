@@ -1,6 +1,6 @@
-# 🌟 GenAI — Text to Image Generator using ClipDrop API
+# 🌟 Pixora — Text to Image Generator using ClipDrop API
 
-GenAI is a powerful full-stack web application that generates high-quality images from text prompts using the [ClipDrop](https://clipdrop.co/) API. It provides a clean, responsive UI built with **ReactJS**, **Tailwind CSS**, and **Framer Motion**, and a secure backend powered by **Node.js** and **MongoDB**.
+Pixora is a powerful full-stack web application that generates high-quality images from text prompts using the [ClipDrop](https://clipdrop.co/) API. It provides a clean, responsive UI built with **ReactJS**, **Tailwind CSS**, and **Framer Motion**, and a secure backend powered by **Node.js** and **MongoDB**.
 
 ---
 
